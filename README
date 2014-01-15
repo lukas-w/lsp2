@@ -1,0 +1,23 @@
+LMMS Sharing Platform 2
+========================
+
+
+Code for new Django-based LMMS Sharing Platform.
+
+Copyright (c) 2014 Tobias Doerffel
+
+License: GPLv2 or later
+
+
+Usage
+=====
+
+* Initializing local database:
+
+  ./manage.py syncdb
+
+
+* Run web server:
+
+ ./manage.py runserver
+
