@@ -67,7 +67,3 @@ class File(models.Model):
 	sha1hash = models.CharField(max_length=40)
 	soundcloudId = models.CharField(max_length=255)
 	tags = models.CharField(max_length=255)
-
-
-
-
