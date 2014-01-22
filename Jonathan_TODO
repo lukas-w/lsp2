@@ -1,4 +1,6 @@
 TO DO LIST
 ==========
 
-Need to rework the DB to include song genres
+Possibly need to recode the DB from scratch
+
+If recode is not needed, then add section in db for genres (waiting on emaily reply from toby)
