@@ -9,6 +9,15 @@ Copyright (c) 2014 Tobias Doerffel
 License: GPLv2 or later
 
 
+Dependencies
+============
+
+These are the requirements needed on ubuntu.
+
+1) sudo apt-get install python3-pip
+2) sudo pip3 install django
+3) sudo easy_install3 South
+
 Usage
 =====
 
