@@ -26,7 +26,11 @@ Usage
   ./manage.py syncdb
 
 
-* Run web server:
+* Run inbuilt django web server:
 
  ./manage.py runserver
+
+Setting up your webserver for deployment
+========================================
+
 
