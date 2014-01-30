@@ -4,3 +4,10 @@ TO DO LIST
 Fix plurality issue in the admin back end
 
 
+ - New theme (try for simpler Google-like flat theme)
+ - Implement tagging system for songs, presets, etc
+ - More useful default searches (eg. hot, trending, popular, new, etc)
+ - Flesh out User Profiles
+ - Create system for 'following' other artists which populates personal Activity Feed
+ - Implement 'Groups' system for artists
+ - Better statistics on tracks and ability to track them
