@@ -6,8 +6,11 @@ from django.contrib.auth.models import User
 class PlatformUser(User):
 	loginFailureCount = models.SmallIntegerField(blank=True,null=True)
 
-	def __unicode__(self):
-		return '%s %s' % (self.first_name, self.last_name )
+	def __str__(self):
+		if self.first_name or self.last_name:
+			return '%s %s' % (self.first_name, self.last_name )
+		else:
+			return self.username;
 
 	class Meta:
 		ordering = ('username', )
@@ -16,8 +19,11 @@ class PlatformUser(User):
 
 
 class Category(models.Model):
-	name = models.CharField(max_length=64)
-	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
+	name = models.CharField(max_length=32)
+	name_plural = models.CharField(max_length=32)
+
+	def __str__(self):
+		return self.name;
 
 	class Meta:
 		verbose_name_plural = "Categories"
