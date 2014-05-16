@@ -48,7 +48,7 @@ class Rating(models.Model):
 	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
 	file = models.ForeignKey('File', verbose_name=Category._meta.verbose_name)
 	date = models.DateTimeField(default=datetime.datetime.now)
-	stars = models.SmallIntegerField()
+	upvote = models.BooleanField()
 
 
 class FileType(models.Model):
