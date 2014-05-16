@@ -1,11 +1,9 @@
 import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 class PlatformUser(User):
-
 	loginFailureCount = models.SmallIntegerField(blank=True,null=True)
 
 	def __unicode__(self):
@@ -14,19 +12,23 @@ class PlatformUser(User):
 	class Meta:
 		ordering = ('username', )
 		verbose_name = "User"
-		verbose_name = "Users"
+		verbose_name_plural = "Users"
 
 
 class Category(models.Model):
-
 	name = models.CharField(max_length=64)
 	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
 
+	class Meta:
+		verbose_name_plural = "Categories"
+
 
 class Subcategory(models.Model):
-
 	name = models.CharField(max_length=64)
 	category = models.ForeignKey('Category', verbose_name=Category._meta.verbose_name)
+
+	class Meta:
+		verbose_name_plural = "Subcategories"
 
 
 class Comment(models.Model):
@@ -67,7 +69,4 @@ class File(models.Model):
 	sha1hash = models.CharField(max_length=40)
 	soundcloudId = models.CharField(max_length=255)
 	tags = models.CharField(max_length=255)
-
-
-
 
