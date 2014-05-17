@@ -4,21 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
 
-class PlatformUser(User):
-	loginFailureCount = models.PositiveSmallIntegerField(blank=True,null=True)
-
-	def __str__(self):
-		if self.first_name or self.last_name:
-			return '%s %s' % (self.first_name, self.last_name )
-		else:
-			return self.username;
-
-	class Meta:
-		ordering = ('username', )
-		verbose_name = "User"
-		verbose_name_plural = "Users"
-
-
 class Category(models.Model):
 	name = models.CharField(max_length=32)
 	name_plural = models.CharField(max_length=32)
@@ -39,14 +24,14 @@ class Subcategory(models.Model):
 
 
 class Comment(models.Model):
-	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
+	user = models.ForeignKey(User)
 	submission = models.ForeignKey('Submission', verbose_name=Category._meta.verbose_name)
 	date = models.DateTimeField(default=datetime.datetime.now)
 	text = models.TextField()
 
 
 class Vote(models.Model):
-	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
+	user = models.ForeignKey(User)
 	submission = models.ForeignKey('Submission')
 	date = models.DateTimeField(default=datetime.datetime.now)
 	upvote = models.BooleanField(default=True)
@@ -78,14 +63,13 @@ class File(models.Model):
 class Submission(models.Model):
 	name = models.CharField(max_length=128)
 	filename = models.CharField(max_length=128)
-
 	description = models.TextField(blank=True)
 
 	updateDate = models.DateTimeField(default=datetime.datetime.now)
 
 	soundcloudId = models.CharField(max_length=255, blank=True)
 
-	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
+	user = models.ForeignKey(User)
 	license = models.ForeignKey('License', verbose_name=License._meta.verbose_name, blank=True, null=True)
 	category = models.ForeignKey('Category', verbose_name=Category._meta.verbose_name)
 	subcategory = models.ForeignKey('Subcategory', verbose_name=Subcategory._meta.verbose_name, blank=True, null=True)
