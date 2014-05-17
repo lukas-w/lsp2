@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models import Sum
 
 class PlatformUser(User):
-	loginFailureCount = models.SmallIntegerField(blank=True,null=True)
+	loginFailureCount = models.PositiveSmallIntegerField(blank=True,null=True)
 
 	def __str__(self):
 		if self.first_name or self.last_name:
@@ -40,7 +40,7 @@ class Subcategory(models.Model):
 
 class Comment(models.Model):
 	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
-	file = models.ForeignKey('File', verbose_name=Category._meta.verbose_name)
+	submission = models.ForeignKey('Submission', verbose_name=Category._meta.verbose_name)
 	date = models.DateTimeField(default=datetime.datetime.now)
 	text = models.TextField()
 
@@ -49,7 +49,7 @@ class Vote(models.Model):
 	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
 	submission = models.ForeignKey('Submission')
 	date = models.DateTimeField(default=datetime.datetime.now)
-	upvote = models.BooleanField()
+	upvote = models.BooleanField(default=True)
 
 	def __str__(self):
 		return '%s: %s1' % (self.submission.name, '+' if self.upvote else '-')
@@ -67,20 +67,19 @@ class License(models.Model):
 
 class File(models.Model):
 	submission = models.ForeignKey('Submission')
-	version = models.SmallIntegerField()
-	size = models.SmallIntegerField()
-	downloadCount = models.SmallIntegerField()
+	version = models.PositiveSmallIntegerField()
+	size = models.PositiveSmallIntegerField()
+	downloadCount = models.PositiveSmallIntegerField()
 	sha1hash = models.CharField(max_length=40)
 	
 	date = models.DateTimeField(default=datetime.datetime.now)
 
 
 class Submission(models.Model):
-	name = models.CharField(max_length=255)
-	filename = models.CharField(max_length=255)
+	name = models.CharField(max_length=128)
+	filename = models.CharField(max_length=128)
 
 	description = models.TextField(blank=True)
-	tags = models.CharField(max_length=255, blank=True)
 
 	updateDate = models.DateTimeField(default=datetime.datetime.now)
 
