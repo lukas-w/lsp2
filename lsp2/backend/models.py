@@ -46,14 +46,14 @@ class Comment(models.Model):
 
 class Rating(models.Model):
 	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
-	file = models.ForeignKey('File', verbose_name=Category._meta.verbose_name)
+	submission = models.ForeignKey('Submission')
 	date = models.DateTimeField(default=datetime.datetime.now)
 	upvote = models.BooleanField()
 
 
-class FileType(models.Model):
+class AllowedMime(models.Model):
 	category = models.ForeignKey('Category', verbose_name=Category._meta.verbose_name)
-	extension = models.CharField(max_length=255)
+	mime = models.CharField(max_length=31)
 
 
 class License(models.Model):
@@ -62,17 +62,28 @@ class License(models.Model):
 
 
 class File(models.Model):
-	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
-	filename = models.CharField(max_length=255)
+	submission = models.ForeignKey('Submission')
+	version = models.SmallIntegerField()
 	size = models.SmallIntegerField()
-	description = models.TextField()
-	license = models.ForeignKey('License', verbose_name=License._meta.verbose_name)
-	category = models.ForeignKey('Category', verbose_name=Category._meta.verbose_name)
-	subcategory = models.ForeignKey('Subcategory', verbose_name=Subcategory._meta.verbose_name)
-	insertDate = models.DateTimeField(default=datetime.datetime.now)
-	updateDate = models.DateTimeField(default=datetime.datetime.now)
 	downloadCount = models.SmallIntegerField()
 	sha1hash = models.CharField(max_length=40)
-	soundcloudId = models.CharField(max_length=255)
-	tags = models.CharField(max_length=255)
+	
+	date = models.DateTimeField(default=datetime.datetime.now)
+
+
+class Submission(models.Model):
+	name = models.CharField(max_length=255)
+	filename = models.CharField(max_length=255)
+
+	description = models.TextField(blank=True)
+	tags = models.CharField(max_length=255, blank=True)
+
+	updateDate = models.DateTimeField(default=datetime.datetime.now)
+
+	soundcloudId = models.CharField(max_length=255, blank=True)
+
+	user = models.ForeignKey('PlatformUser', verbose_name=PlatformUser._meta.verbose_name)
+	license = models.ForeignKey('License', verbose_name=License._meta.verbose_name, blank=True, null=True)
+	category = models.ForeignKey('Category', verbose_name=Category._meta.verbose_name)
+	subcategory = models.ForeignKey('Subcategory', verbose_name=Subcategory._meta.verbose_name, blank=True, null=True)
 

@@ -9,6 +9,7 @@ admin.site.register(Subcategory, admin.ModelAdmin)
 admin.site.register(Comment, admin.ModelAdmin)
 admin.site.register(Rating, admin.ModelAdmin)
 admin.site.register(License, admin.ModelAdmin)
-admin.site.register(FileType, admin.ModelAdmin)
+admin.site.register(AllowedMime, admin.ModelAdmin)
 admin.site.register(File, admin.ModelAdmin)
+admin.site.register(Submission, admin.ModelAdmin)
 
