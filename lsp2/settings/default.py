@@ -10,19 +10,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '895-w%ha=uakbaup1a&+ie$3%idz7ng!n-x^^xl+bbi6!v%=(2'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
+from os.path import abspath, dirname
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
 ALLOWED_HOSTS = []
 
@@ -37,11 +26,11 @@ INSTALLED_APPS = (
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.sites',
-
-	'autofixture',
+	'django.contrib.humanize',
 
 	'allauth',
 	'allauth.account',
+
 	'lsp2.backend',
 )
 
@@ -81,17 +70,6 @@ ROOT_URLCONF = 'lsp2.urls'
 
 WSGI_APPLICATION = 'lsp2.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-	}
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -110,11 +88,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-	os.path.join(BASE_DIR, 'static'),
-)
 
 TEMPLATE_DIRS = (
 	os.path.join(BASE_DIR, 'templates'),
 )
 
+# Account settings
+ACCOUNT_AUTHENTICATION_METHOD='username_email'
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION='mandatory'
+
+SITE_ID = 1
