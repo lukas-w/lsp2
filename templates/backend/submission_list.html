@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul class="submission-list">
+    {% for submission in submission_list %}
+        <li><b><a href="{% url 'submission-detail' submission.pk %}">{{ submission.name }}</a></b> [{{submission.category.name}}]<br/>
+		by {{ submission.user }} • {{submission.downloadCount}} downloads
+		</li>
+    {% endfor %}
+</ul>
+
+{% if is_paginated %}
+<div class="pagination">
+	<span class="page-links">
+		{% if page_obj.has_previous %}
+		<a href="{% url 'submission-list' %}?page={{page_obj.previous_page_number}}">previous</a> •
+		{% endif %}
+	<span class="page-current">
+		Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+	</span>
+		{% if page_obj.has_next %}
+		• <a href="{% url 'submission-list' %}?page={{page_obj.next_page_number}}">next</a>
+		{% endif %}
+	</span>
+</div>
+{% endif %}
+
+{% endblock %}

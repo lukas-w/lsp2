@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"> 
+		
+		<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+
+		<title>{% if page_title %}{{page_title}}{% else %}LSP{%endif%}</title>
+	</head>
+
+	<body>
+		<div id="root">
+			<div id="header-root">
+				<div id="header" class="container">
+				<h1>LMMS Sharing Platform</h1>
+				</div>
+			</div>
+
+			<div id="menu-root">
+				<div id="menu" class="container">
+					<span id="nav">
+						<a href="/" class="nav-item">Home</a>
+						<a href="{% url 'submission-list'%}" class="nav-item">Browse</a>
+					</span>
+
+					<span id="user">
+						{% if user.is_authenticated %}
+						Logged in as <b>{{ user.username }}</b>. <a class="nav-item" href="{% url 'account_logout' %}">Log out</a>
+						{% else %}
+						<a class="nav-item" href="{% url 'account_login' %}">Login</a>
+						<a class="nav-item" href="{% url 'account_signup' %}">Sign up</a>
+						{% endif %}
+					</span>
+				</div>
+			</div>
+
+			<div class="container" id="content">		
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

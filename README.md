@@ -30,7 +30,7 @@ Requirements
 This project uses the following third party django apps:
 
 * [django-allauth]
-* [django-autofixture] (Only for testing purposes)
+* [django-autofixture][] (Only for testing purposes)
 
 Install them via
 
