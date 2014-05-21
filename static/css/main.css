@@ -133,3 +133,9 @@ button.primary:hover {
 	background-color: #327BBA;
 	color: white;
 }
+
+.badge {
+	background-color: #ccc;
+	padding: 2px 6px;
+	border-radius: 10px;
+}

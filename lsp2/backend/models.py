@@ -4,6 +4,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
 
+from model_utils.managers import InheritanceManager
+
 
 class Comment(models.Model):
 	user = models.ForeignKey(User)
@@ -53,6 +55,8 @@ class Submission(models.Model):
 	license = models.ForeignKey(
 		License, verbose_name=License._meta.verbose_name, null=True)
 
+	objects = InheritanceManager()
+
 	def __str__(self):
 		return self.name
 
@@ -68,15 +72,28 @@ class Submission(models.Model):
 	def voteBalance(self):
 		return self.upVotes() - self.downVotes()
 
+	def category(self):
+		return Submission.objects.get_subclass(id=self.pk)._meta.verbose_name
+
 
 class ProjectSubmission(Submission):
-	seconds = models.PositiveSmallIntegerField()
+	seconds = models.PositiveSmallIntegerField(null=True)
 	soundcloudId = models.CharField(max_length=255, blank=True)
+
+	class Meta:
+		verbose_name = "Project"
+		verbose_name_plural = "Projects"
 
 
 class SampleSubmission(Submission):
-	milliseconds = models.PositiveSmallIntegerField()
+	milliseconds = models.PositiveSmallIntegerField(null=True)
+
+	class Meta:
+		verbose_name = "Sample"
+		verbose_name_plural = "Samples"
 
 
 class ThemeSubmission(Submission):
-	pass
+	class Meta:
+		verbose_name = "Theme"
+		verbose_name_plural = "Themes"

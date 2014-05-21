@@ -4,7 +4,7 @@
 
 <ul class="submission-list">
     {% for submission in submission_list %}
-        <li><b><a href="{% url 'submission-detail' submission.pk %}">{{ submission.name }}</a></b> [{{submission.category.name}}]<br/>
+        <li><b><a href="{% url 'submission-detail' submission.pk %}">{{ submission.name }}</a></b> <span class="badge">{{ submission.category }}</span><br/>
 		by {{ submission.uploader.get_full_name }} • {{submission.downloadCount}} downloads
 		</li>
     {% endfor %}

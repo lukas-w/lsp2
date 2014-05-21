@@ -11,5 +11,4 @@ admin.site.register(File, admin.ModelAdmin)
 admin.site.register(Submission, admin.ModelAdmin)
 admin.site.register(ProjectSubmission, admin.ModelAdmin)
 admin.site.register(SampleSubmission, admin.ModelAdmin)
-
 admin.site.register(ThemeSubmission, admin.ModelAdmin)

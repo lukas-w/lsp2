@@ -30,6 +30,7 @@ Requirements
 This project uses the following third party django apps:
 
 * [django-allauth]
+* [django-model-utils]
 * [django-autofixture][] (Only for testing purposes)
 
 Install them via
@@ -37,4 +38,5 @@ Install them via
     pip install -r requirements.txt
 
 [django-allauth]: https://github.com/pennersr/django-allauth
+[django-model-utils]: https://github.com/carljm/django-model-utils/
 [django-autofixture]: https://github.com/gregmuellegger/django-autofixture

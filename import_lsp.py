@@ -122,12 +122,12 @@ for row in cur:
     if cat == "Projects":
         # TODO: Get length of project in seconds
         s = ProjectSubmission(
-            seconds=0
+            seconds=None
         )
     elif cat == "Samples":
         # TODO: Get length of sample in milliseconds
         s = SampleSubmission(
-            milliseconds=0
+            milliseconds=None
         )
     elif cat == "UI themes":
         s = ThemeSubmission()
