@@ -57,6 +57,9 @@ class Submission(models.Model):
 
 	objects = InheritanceManager()
 
+	class Meta:
+		ordering = ["-submitDate"]
+
 	def __str__(self):
 		return self.name
 

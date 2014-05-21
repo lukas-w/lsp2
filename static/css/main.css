@@ -88,6 +88,11 @@ hr {
 	padding: 0;
 }
 
+.submission-list .title {
+	font-weight: bold;
+	font-size: 15px;
+}
+
 .submission-list > li {
 	display: block;
 	padding: 20px;

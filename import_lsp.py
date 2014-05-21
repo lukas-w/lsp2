@@ -143,8 +143,8 @@ for row in cur:
     s.name = filename[0:filename.rfind('.')]
     s.license = None if license_id==0 else License.objects.get(pk=license_id)
     s.description = description
-    # s.submitDate = insert_date
-    # s.updateDate = update_date
+    s.submitDate = insert_date
+    s.updateDate = update_date
 
     s.save()
 
@@ -172,7 +172,7 @@ for row in cur:
         pk=id,
         user=User.objects.get(pk=user_id),
         submission=Submission.objects.get(pk=file_id),
-        # date=date,
+        date=date,
         text=text
     )
 
