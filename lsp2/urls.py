@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from django.views.generic import TemplateView
 
-import lsp2.backend.urls
+import lsp2.submissions.urls
 
 urlpatterns = patterns(
 	'',
@@ -19,5 +19,5 @@ urlpatterns = patterns(
 	(r'^accounts/', include('allauth.urls')),
 	(r'^accounts/profile/$', TemplateView.as_view(template_name='account/profile.html')),
 
-	(r'^', include(lsp2.backend.urls))
+	(r'^', include(lsp2.submissions.urls))
 )

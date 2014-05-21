@@ -31,7 +31,7 @@ INSTALLED_APPS = (
 	'allauth',
 	'allauth.account',
 
-	'lsp2.backend',
+	'lsp2.submissions',
 )
 
 MIDDLEWARE_CLASSES = (

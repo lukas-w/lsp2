@@ -16,7 +16,7 @@ django.setup()
 from django.db import transaction
 transaction.set_autocommit(False)
 
-from lsp2.backend.models import *
+from lsp2.submissions.models import *
 
 import pymysql
 

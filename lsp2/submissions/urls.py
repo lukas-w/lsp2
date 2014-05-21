@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic import TemplateView, RedirectView
 
-from lsp2.backend.views import *
+from lsp2.submissions.views import *
 
 urlpatterns = patterns(
 	'',

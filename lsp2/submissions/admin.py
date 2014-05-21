@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from lsp2.backend.models import *
+from lsp2.submissions.models import *
 
 
 admin.site.register(Comment, admin.ModelAdmin)

@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 
-from lsp2.backend.models import Submission
+from lsp2.submissions.models import Submission
 
 
 class UserDetail(DetailView):

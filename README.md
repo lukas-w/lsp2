@@ -21,7 +21,7 @@ Run web server:
 
 For testing purposes, fill database with pseudo-data by running
 
-    ./manage.py loadtestdata backend.<Model>:<n>
+    ./manage.py loadtestdata submissions.<Model>:<n>
 
 
 Requirements
