@@ -2,8 +2,8 @@
 {% load humanize %}
 
 {% block content %}
-<h2>{{submission.category.name}}: {{ submission.name }}</h2>
-<i>submitted by <a href="{% url 'user-detail' submission.user.pk %}">{{ submission.user }}</a></i> • {{submission.downloadCount}} downloads 
+<h2>{{ submission.name }}</h2>
+<i>submitted by <a href="{% url 'user-detail' submission.uploader.pk %}">{{ submission.uploader.get_full_name }}</a></i> • {{submission.downloadCount}} downloads
 
 <p>
 <h3>Description:</h3>
@@ -15,9 +15,9 @@
 <ul>
 {% for comment in comment_list %}
 	<li>
-		<a href="{% url 'user-detail' submission.user.pk %}">{{ comment.user }}</a> comented {{ comment.date|naturaltime }}:<br/>
+		<a href="{% url 'user-detail' submission.uploader.pk %}">{{ comment.user }}</a> comented {{ comment.date|naturaltime }}:<br/>
 		<p>{{ comment.text }}</p>
-	</li>	
+	</li>
 {% endfor %}
 </ul>
 </p>
