@@ -66,6 +66,12 @@ AUTHENTICATION_BACKENDS = (
 	"allauth.account.auth_backends.AuthenticationBackend",
 )
 
+PASSWORD_HASHERS = (
+	'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+	'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+	'django.contrib.auth.hashers.UnsaltedSHA1PasswordHasher',
+)
+
 ROOT_URLCONF = 'lsp2.urls'
 
 WSGI_APPLICATION = 'lsp2.wsgi.application'
