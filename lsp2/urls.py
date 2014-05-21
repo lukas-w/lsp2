@@ -5,7 +5,8 @@ from django.views.generic import TemplateView
 
 import lsp2.backend.urls
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+	'',
 	# Examples:
 	# url(r'^$', 'lsp2.views.home', name='home'),
 	# url(r'^lsp2/', include('lsp2.foo.urls')),

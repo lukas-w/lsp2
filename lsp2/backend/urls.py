@@ -3,7 +3,8 @@ from django.views.generic import TemplateView, RedirectView
 
 from lsp2.backend.views import *
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+	'',
 	url(r'^$', WelcomeView.as_view(), name='welcome'),
 
 	url(r'^files/$', SubmissionList.as_view(), name='submission-list'),

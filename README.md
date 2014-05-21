@@ -38,5 +38,3 @@ Install them via
 
 [django-allauth]: https://github.com/pennersr/django-allauth
 [django-autofixture]: https://github.com/gregmuellegger/django-autofixture
-
-

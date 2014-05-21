@@ -1,6 +1,6 @@
 body {
 	color: #333;
-	margin: 0px;
+	margin: 0;
 	margin-bottom: 20px;
 	font-family: sans-serif;
 	font-size: 14px;
@@ -17,40 +17,40 @@ a:focus {
 }
 
 hr {
-	margin: 20px 0px;
+	margin: 20px 0;
 	border: 0;
 	border-top: 1px solid #eee;
 }
 
-#root {
-	margin: 0px;
+.root {
+	margin: 0;
 }
 
-#header-root {
+.header-root {
 	background: #ddd;
 	color: #333;
 }
 
-#menu-root {
+.menu-root {
 	background: #ddd;
 }
 
-#menu {
+.menu {
 	line-height: 38px;
 }
 
-#menu:after { 
+.menu:after {
    content: " ";
-   display: block; 
-   height: 0; 
+   display: block;
+   height: 0;
    clear: both;
 }
 
-#menu > #nav {
+.menu > .nav {
 	float: left;
 }
 
-#menu > #user {
+.menu > .user {
 	float: right;
 }
 
@@ -67,14 +67,14 @@ hr {
 	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 0px 30px;
+	padding: 0 30px;
 }
 
-#header{
+.header{
 	padding: 30px 30px;
 }
 
-#content {
+.content {
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 30px;
@@ -85,7 +85,7 @@ hr {
 }
 
 .submission-list{
-	padding: 0px;
+	padding: 0;
 }
 
 .submission-list > li {
@@ -97,8 +97,9 @@ hr {
 	border-top: 1px solid #eee;
 }
 
-form label{
+form th{
 	font-weight: bold;
+	text-align: right;
 }
 
 input[type="text"],
@@ -106,8 +107,7 @@ input[type="password"] {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	padding: 4px;
-	background-color: 0px;
-	box-shadow: inset 0 0 4px 2px #eee;
+	box-shadow: inset 0 0 1px 1px #eee;
 }
 
 button {
@@ -120,7 +120,7 @@ button {
 }
 
 button:hover {
-	background-color #eee;
+	background-color: #eee;
 }
 
 button.primary {

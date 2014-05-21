@@ -2,7 +2,7 @@
 {% load humanize %}
 
 {% block content %}
-<h2>{{s_user.get_full_name }} • <i>{{ s_user.username }}</i></h2>
+<h1>{{ s_user.get_full_name }} • <i>{{ s_user.username }}</i></h1>
 <i>joined {{ s_user.date_joined | naturaltime }}</i>
 
 {% endblock %}
