@@ -32,6 +32,10 @@ print("Done")
 ###############################################################################
 
 
+def fix_encoding(text):
+    return text.encode('latin-1').decode('utf-8')
+
+
 def print_status(cursor, name):
     print(
         "\rImported %d of %d %s" % (cursor.rownumber, cursor.rowcount, name),
@@ -47,6 +51,7 @@ cur.execute(
 
 for row in cur:
     id, login, password, realname, is_admin = row
+    realname = fix_encoding(realname)
 
     u = User(
         pk=id,
@@ -131,6 +136,7 @@ for row in cur:
         )
     elif cat == "UI themes":
         s = ThemeSubmission()
+        filename = filename[0:filename.rfind('.')]
     elif cat == "Presets":
         pass
     elif cat == "Tutorials":
