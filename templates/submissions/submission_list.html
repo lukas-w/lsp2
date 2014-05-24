@@ -3,28 +3,40 @@
 
 {% block content %}
 
-<ul class="submission-list">
-    {% for submission in submission_list %}
-        <li>
-            <p><span class="title"><a href="{% url 'submission-detail' submission.pk %}">{{ submission.name }}</a></span> <span class="badge">{{ submission.category }}</span></p>
-		by {{ submission.uploader.get_full_name }} • {{ submission.submitDate | naturaltime }} • {{ submission.downloadCount }} downloads
-		</li>
-    {% endfor %}
-</ul>
+<div class="row">
+    <div class="col-2">
+        <ul>
+            <li><a href="{% url 'submission-list'%}">All submissions</a></li>
+            <li><a href="{% url 'submission-list' category='projects'%}">Projects</a></li>
+            <li><a href="{% url 'submission-list' category='samples'%}">Samples</a></li>
+            <li><a href="{% url 'submission-list' category='themes'%}">Themes</a></li>
+        </ul>
+    </div>
+    <div class="col-10">
+        <ul class="submission-list">
+            {% for submission in submission_list %}
+                <li>
+                    <p><span class="title"><a href="{% url 'submission-detail' pk=submission.pk %}">{{ submission.name }}</a></span> <span class="badge">{{ submission.category }}</span></p>
+                    by {{ submission.uploader.get_full_name }} • {{ submission.submitDate | naturaltime }} • {{ submission.downloadCount }} downloads
+                </li>
+            {% endfor %}
+        </ul>
 
-{% if is_paginated %}
-<div class="pagination">
-	<span class="page-links">
-		{% if page_obj.has_previous %}
-		<a href="{% url 'submission-list' %}?page={{page_obj.previous_page_number}}">previous</a> •
-		{% endif %}
-	<span class="page-current">
-		Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-	</span>
-		{% if page_obj.has_next %}
-		• <a href="{% url 'submission-list' %}?page={{page_obj.next_page_number}}">next</a>
-		{% endif %}
-	</span>
+        {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                <a href="{% url 'submission-list' %}?page={{page_obj.previous_page_number}}">previous</a> •
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                {% if page_obj.has_next %}
+                • <a href="{% url 'submission-list' %}?page={{page_obj.next_page_number}}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
 </div>
 {% endif %}
 

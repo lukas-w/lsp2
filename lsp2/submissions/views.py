@@ -1,7 +1,8 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 
-from lsp2.submissions.models import Submission
+from lsp2.submissions.models import Submission, ProjectSubmission, \
+	SampleSubmission, ThemeSubmission
 
 
 class UserDetail(DetailView):
@@ -24,6 +25,29 @@ class SubmissionList(ListView):
 	context_object_name = 'submission_list'
 
 	paginate_by = 20
+
+	def get_queryset(self):
+		cat = self.kwargs['category']
+
+		if cat is None:
+			objects = Submission.objects
+		if cat == 'projects':
+			objects = ProjectSubmission.objects
+		elif cat == 'samples':
+			objects = SampleSubmission.objects
+		elif cat == 'themes':
+			objects = ThemeSubmission.objects
+
+		return objects.all()
+
+	def get_template_names(self):
+		return 'submissions/submission_list.html'
+
+	def get_context_data(self, **kwargs):
+		print(dir(self))
+		print(self.kwargs)
+		context = super(SubmissionList, self).get_context_data(**kwargs)
+		return context
 
 
 class WelcomeView(TemplateView):
