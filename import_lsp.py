@@ -19,6 +19,7 @@ transaction.set_autocommit(False)
 from lsp2.submissions.models import *
 
 import pymysql
+import ftfy
 
 ###############################################################################
 
@@ -33,7 +34,7 @@ print("Done")
 
 
 def fix_encoding(text):
-    return text.encode('latin-1').decode('utf-8')
+    return ftfy.fix_text(text)
 
 
 def print_status(cursor, name):
