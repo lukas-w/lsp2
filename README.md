@@ -27,16 +27,37 @@ For testing purposes, fill database with pseudo-data by running
 Requirements
 ============
 
-This project uses the following third party django apps:
+This project uses the following python packages:
 
-* [django-allauth]
-* [django-model-utils]
-* [django-autofixture][] (Only for testing purposes)
+* For production
+    * [Django] 1.7
+    * [django-allauth]
+    * [django-model-utils]
+    * [markdown]
+    * [django-markupfield]
+* For testing/development
+    * [django-autofixture][] (Only for testing purposes)
+* For the import script
+    * [PyMySQL]
+    * [ftfy]
 
 Install them via
 
-    pip install -r requirements.txt
+```sh
+    $ pip install -r requirements.txt
+    $ pip install -r requirements.dev.txt
+    $ pip install -r requirements.import.txt
+```
 
+respectively.
+
+[django]: https://www.djangoproject.com/
 [django-allauth]: https://github.com/pennersr/django-allauth
 [django-model-utils]: https://github.com/carljm/django-model-utils/
+[markdown]: https://pypi.python.org/pypi/Markdown]
+[django-markupfield]: https://github.com/jamesturk/django-markupfield
+
 [django-autofixture]: https://github.com/gregmuellegger/django-autofixture
+
+[PyMySQL]: http://www.pymysql.org/
+[ftfy]: https://github.com/LuminosoInsight/python-ftfy

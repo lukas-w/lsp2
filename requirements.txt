@@ -1,4 +1,5 @@
 https://www.djangoproject.com/download/1.7.b4/tarball/
 django-allauth
 django-model-utils
-django-autofixture
+Markdown
+django-markupfield
