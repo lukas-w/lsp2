@@ -44,8 +44,6 @@ class SubmissionList(ListView):
 		return 'submissions/submission_list.html'
 
 	def get_context_data(self, **kwargs):
-		print(dir(self))
-		print(self.kwargs)
 		context = super(SubmissionList, self).get_context_data(**kwargs)
 		return context
 

@@ -6,12 +6,10 @@ from django.db.models import Sum
 
 from model_utils.managers import InheritanceManager
 
-from markupfield.fields import MarkupField
-
 
 class Profile(models.Model):
 	user = models.OneToOneField(User)
-	text = MarkupField()
+	text = models.TextField()
 
 
 class Comment(models.Model):
@@ -53,7 +51,7 @@ class File(models.Model):
 
 class Submission(models.Model):
 	name = models.CharField(max_length=128)
-	description = MarkupField(blank=True)
+	description = models.TextField(blank=True)
 
 	submitDate = models.DateTimeField(default=datetime.datetime.now)
 	updateDate = models.DateTimeField(default=datetime.datetime.now)

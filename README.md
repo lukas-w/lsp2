@@ -34,7 +34,7 @@ This project uses the following python packages:
     * [django-allauth]
     * [django-model-utils]
     * [markdown]
-    * [django-markupfield]
+    * [django-markupfield] (Currently broken)
 * For testing/development
     * [django-autofixture][] (Only for testing purposes)
 * For the import script
